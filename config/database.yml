@@ -1,0 +1,31 @@
+login: &login
+  adapter: postgresql
+  encoding: utf8
+  host: sandbox.in.mycasebook.org
+  ---username: bibudhlahiri
+  username: indcs
+  password:
+  min_messages: warning
+  template: template0
+  ---database: casebook2_development
+  database: casebook2_sandbox
+
+development:
+  <<: *login
+  ---database: casebook2_development
+  database: casebook2_sandbox
+
+production:
+  <<: *login
+  database: casebook2_production
+
+test: &test
+  <<: *login
+  database: casebook2_test<%= ENV['TEST_ENV_NUMBER'] %>
+
+cucumber:
+  <<: *test
+
+benchmark:
+  <<: *login
+  database: casebook2_development

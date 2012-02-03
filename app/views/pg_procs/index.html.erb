@@ -1,0 +1,18 @@
+<h1>Listing pg_procs</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pg_procs.each do |pg_proc| %>
+  <tr>
+    <td><%= pg_proc.call_stored_procedure('test_proc') %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
